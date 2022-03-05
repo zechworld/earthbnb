@@ -5,14 +5,15 @@ import {
   GlobeAltIcon,
   MenuIcon,
   UserCircleIcon,
-  UsersIcon,
   SearchIcon,
 } from '@heroicons/react/solid'
 
+// CSS Files 
+import "react-date-range/dist/styles.css"
+import "react-date-range/dist/theme/default.css"
+
 export default function Header() {
   const [searchInput, setSearchInput] = useState('')
-
-  console.log(searchInput)
 
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 bg-white p-3 shadow-md md:p-4">
@@ -49,11 +50,7 @@ export default function Header() {
         </div>
       </div>
 
-      {searchInput && (
-        <div>
-          
-        </div>
-      )}
+      {searchInput && <div></div>}
     </header>
   )
 }
