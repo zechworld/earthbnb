@@ -3,6 +3,8 @@ import Header from '../components/Header'
 import Banner from '../components/Banner'
 import SmallCard from '../components/SmallCard'
 import MediumCard from '../components/MediumCard'
+import LargeCard from '../components/LargeCard'
+import Footer from '../components/Footer'
 
 export default function Home(props) {
   const { exploreData, cardsData } = props
@@ -31,11 +33,21 @@ export default function Home(props) {
         <section>
           <h2 className="py-8 text-4xl font-semibold">Live Anywhere</h2>
 
-          {cardsData?.map(item => (
-            <MediumCard key={item.img} {...item} />
-          ))}
+          <div className="-ml-3 flex space-x-6 overflow-scroll p-3 scrollbar-hide">
+            {cardsData?.map((item) => (
+              <MediumCard key={item.img} {...item} />
+            ))}
+          </div>
         </section>
+
+        <LargeCard
+          img="https://links.papareact.com/4cj"
+          title="The Greatest Outdoors"
+          description="Wishlist curated by Earthbnb"
+          buttonText="Get Inspired"
+        />
       </main>
+      <Footer />
     </div>
   )
 }
@@ -52,7 +64,7 @@ export async function getStaticProps() {
   return {
     props: {
       exploreData,
-      cardsData
+      cardsData,
     },
   }
 }
