@@ -1,3 +1,4 @@
+// Libraries
 import Image from 'next/image'
 
 const LargeCard = ({ img, title, description, buttonText }) => {
