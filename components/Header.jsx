@@ -1,3 +1,4 @@
+// Libraries
 import Image from 'next/image'
 import {
   GlobeAltIcon,
