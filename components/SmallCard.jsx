@@ -1,8 +1,16 @@
+// Libraries
 import Image from 'next/image'
 
+/**
+ * Componente Card de tamaño chico estilizada
+ * @param {string} img
+ * @param {string} location
+ *  @param {string} distance
+ * @returns
+ */
 export default function SmallCard({ img, location, distance }) {
   return (
-    <div className="flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer hover:bg-gray-50 hover:scale-x-105 transition transform duration-200">
+    <div className="m-2 mt-5 flex transform cursor-pointer items-center space-x-4 rounded-xl transition duration-200 hover:scale-x-105 hover:bg-gray-50">
       {/* Left */}
       <div className="relative h-16 w-16 ">
         <Image src={img} layout="fill" className="rounded-lg" />
