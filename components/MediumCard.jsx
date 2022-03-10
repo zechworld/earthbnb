@@ -1,6 +1,13 @@
 // Libraries
 import Image from 'next/image'
 
+/**
+ * Componente Card de tamaño mediano estilizada
+ * 
+ * @param {string} img
+ * @param {string} title
+ * @returns 
+ */
 const MediumCard = ({ img, title }) => {
   return (
     <div className='cursor-pointer hover:scale-105 transform transition duration-300 ease-out'>
