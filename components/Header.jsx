@@ -1,5 +1,6 @@
 // Libraries
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { DateRangePicker } from 'react-date-range'
 import {
@@ -14,17 +15,34 @@ import {
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 
-export default function Header() {
+export default function Header({ placeholder }) {
   // Estados
   const [searchInput, setSearchInput] = useState('')
   const [numGuests, setNumGuests] = useState(1)
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
+  const router = useRouter()
 
   // Functions
   const handleSelectDate = (ranges) => {
     setStartDate(ranges.selection.startDate)
     setEndDate(ranges.selection.endDate)
+  }
+
+  const resetInput = () => {
+    setSearchInput('')
+  }
+
+  const search = () => {
+    router.push({
+      pathname: '/search',
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        numGuests,
+      },
+    })
   }
 
   const selectionRange = {
@@ -36,7 +54,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 bg-white p-3 shadow-md md:p-4">
       {/* Left */}
-      <div className="relative my-auto flex h-10 cursor-pointer items-center">
+      <div
+        onClick={() => router.push('/')}
+        className="relative my-auto flex h-10 cursor-pointer items-center"
+      >
         <Image
           src="/images/logo_x.png"
           alt="logo"
@@ -51,7 +72,7 @@ export default function Header() {
         <input
           className="flex-grow bg-transparent pl-5 text-gray-600 placeholder-gray-400 outline-none"
           type="text"
-          placeholder="Start your search"
+          placeholder={placeholder || "Start your search"}
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
@@ -86,9 +107,18 @@ export default function Header() {
             <input
               className="w-12 pl-2 text-lg text-green-400 outline-none"
               type="number"
-              value="numGuests"
+              value={numGuests}
+              min={1}
               onChange={(e) => setNumGuests(e.target.value)}
             />
+          </div>
+          <div className="flex">
+            <button className="flex-grow text-gray-500" onClick={resetInput}>
+              Cancel
+            </button>
+            <button onClick={search} className="flex-grow text-green-400">
+              Search
+            </button>
           </div>
         </div>
       )}
