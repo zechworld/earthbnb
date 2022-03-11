@@ -82,7 +82,7 @@ export default function Header({ placeholder }) {
       {/* Right */}
       <div className="flex items-center justify-end space-x-2 text-gray-500">
         <p className="hidden cursor-pointer md:inline">Become a earthian</p>
-        <GlobeAltIcon className="h-6 cursor-pointer" />
+        <GlobeAltIcon className="hidden h-6 cursor-pointer sm:inline" />
         <div className="flex items-center space-x-2 rounded-full border-2 p-2">
           <MenuIcon className="h-6" />
           <UserCircleIcon className="h-6" />
